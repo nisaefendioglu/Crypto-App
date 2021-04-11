@@ -1,8 +1,11 @@
-import 'package:crypto_app/models/users.dart';
-import 'package:crypto_app/services/authorization_service.dart';
-import 'package:crypto_app/services/firestoreservice.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+
+import '../models/users.dart';
+import '../services/authorization_service.dart';
+import '../services/firestoreservice.dart';
 
 class CreateAccount extends StatefulWidget {
   @override
