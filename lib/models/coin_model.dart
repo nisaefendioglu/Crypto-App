@@ -1,33 +1,42 @@
-import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-class Coin extends Equatable {
-  final String name;
-  final String fullName;
-  final double price;
+const List<String> cryptoList = [
+  'bitcoin',
+  'ethereum',
+  'litecoin',
+  'polkadot',
+  'bitcoin-cash',
+  'stellar',
+  'chainlink',
+  'binancecoin',
+  'tether',
+  'monero',
+];
 
-  const Coin({
-    @required this.name,
-    @required this.fullName,
-    @required this.price,
-  });
+const coinAPIURL = 'https://api.coingecko.com/api/v3/simple/price?ids=';
 
-  @override
-  List<Object> get props => [
-        name,
-        fullName,
-        price,
-      ];
+const apiKey = '';
 
-  @override
-  String toString() =>
-      'Coin { name: $name, fullName: $fullName, price: $price }';
-
-  factory Coin.fromJson(Map<String, dynamic> json) {
-    return Coin(
-      name: json['CoinInfo']['Name'] as String,
-      fullName: json['CoinInfo']['FullName'] as String,
-      price: (json['RAW']['USD']['PRICE'] as num).toDouble(),
-    );
+class CoinData {
+  Future getCoinData(String selectedCurrency) async {
+    Map<String, String> cryptoPrices = {};
+    for (String crypto in cryptoList) {
+      String priceUnit = selectedCurrency.toLowerCase();
+      String requestURL = '$coinAPIURL$crypto&vs_currencies=$priceUnit';
+      //'$coinAPIURL/$crypto/$selectedCurrency?apikey=$apiKey';
+      http.Response response = await http.get(requestURL);
+      if (response.statusCode == 200) {
+        String data = response.body;
+        //var decodedData = jsonDecode(response.body);
+        var price = jsonDecode(data)['$crypto']['$priceUnit'];
+        cryptoPrices[crypto] = price.toString();
+        print(cryptoPrices);
+      } else {
+        print(response.statusCode);
+        throw 'İstek atılırken bir sorun oluştu.';
+      }
+    }
+    return cryptoPrices;
   }
 }

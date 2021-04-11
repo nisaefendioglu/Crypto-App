@@ -53,6 +53,20 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  
+  assets:
+    - images/bitcoin.png
+    - images/binancecoin.png
+    - images/bitcoin-cash.png
+    - images/chainlink.png
+    - images/ethereum.png
+    - images/litecoin.png
+    - images/monero.png
+    - images/polkadot.png
+    - images/stellar.png
+    - images/tether.png
+    
   
 
   # To add assets to your application, add an assets section, like this:

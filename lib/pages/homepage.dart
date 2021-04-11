@@ -1,8 +1,7 @@
+import 'package:crypto_app/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
-import 'package:crypto_app/pages/Block.dart';
-import 'home_screen.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,9 +29,9 @@ class _HomeState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.black,
         centerTitle: true,
-        title: Text("Crypto App"),
+        title: Text("Crypto Apppppp"),
       ),
       body: Stack(
         children: <Widget>[
@@ -51,11 +50,10 @@ class _HomeState extends State<HomePage> {
     String slogan;
     switch (seciliPozisyon) {
       case 0:
-        return BlockPage();
+        return HomeScreen();
         // slogan = "Anasayfa";
         break;
       case 1:
-        BlockPage();
         slogan = "Sohbet Odaları";
         break;
       case 2:

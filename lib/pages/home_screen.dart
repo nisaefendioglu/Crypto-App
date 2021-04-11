@@ -1,4 +1,4 @@
-import 'package:crypto_app/blocs/crypto/crypto_bloc.dart';
+import 'package:crypto_app/models/coin_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,104 +8,130 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _scrollController = ScrollController();
+  String selectedCurrency = 'USD';
+
+  Map<String, String> coinValues = {};
+  bool isWaiting = false;
+
+  void getData() async {
+    isWaiting = true;
+    print('durum');
+
+    try {
+      var data = await CoinData().getCoinData(selectedCurrency);
+
+      isWaiting = false;
+      setState(() {
+        coinValues = data;
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Column makeCards() {
+    List<CryptoCard> cryptoCards = [];
+    for (String crypto in cryptoList) {
+      cryptoCards.add(
+        CryptoCard(
+          cryptoCurrency: crypto,
+          selectedCurrency: selectedCurrency,
+          value: isWaiting ? '...' : coinValues[crypto],
+        ),
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: cryptoCards,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<CryptoBloc, CryptoState>(
-        builder: (context, state) {
-          return Container(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Container(
+              height: (MediaQuery.of(context).size.height) - 150.0,
+              child: SingleChildScrollView(child: makeCards())),
+          Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Theme.of(context).primaryColor,
-                  Colors.grey[900],
-                ],
-              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.blue.withOpacity(0.3),
+                  spreadRadius: 10,
+                  blurRadius: 22,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
             ),
-            child: _buildBody(state),
-          );
-        },
+            alignment: Alignment.center,
+            padding: EdgeInsets.only(bottom: 00.0),
+            //color: Colors.lightBlue,
+          ),
+        ],
       ),
     );
   }
+}
 
-  _buildBody(CryptoState state) {
-    if (state is CryptoLoading) {
-      return Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor),
+class CryptoCard extends StatelessWidget {
+  const CryptoCard({
+    this.value,
+    this.selectedCurrency,
+    this.cryptoCurrency,
+  });
+
+  final value;
+  final String selectedCurrency;
+  final String cryptoCurrency;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0.0, 3.0, 0.0, 2.0),
+      child: Card(
+        color: Colors.black,
+        elevation: 5.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
         ),
-      );
-    } else if (state is CryptoLoaded) {
-      return RefreshIndicator(
-        color: Theme.of(context).accentColor,
-        onRefresh: () async {
-          context.bloc<CryptoBloc>().add(RefreshCoins());
-        },
-        child: NotificationListener<ScrollNotification>(
-          onNotification: (notification) =>
-              _onScrollNotification(notification, state),
-          child: ListView.builder(
-            controller: _scrollController,
-            itemCount: state.coins.length,
-            itemBuilder: (BuildContext context, int index) {
-              final coin = state.coins[index];
-              return ListTile(
-                leading: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      '${++index}',
-                      style: TextStyle(
-                        color: Theme.of(context).accentColor,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 01.0, horizontal: 00.0),
+          child: Column(
+            children: [
+              ListTile(
                 title: Text(
-                  coin.fullName,
-                  style: TextStyle(color: Colors.white),
+                  '${cryptoCurrency[0].toUpperCase()}${cryptoCurrency.substring(1)}',
+                  style: TextStyle(
+                      fontFamily: 'Poppins', color: Colors.white, fontSize: 18),
                 ),
-                subtitle: Text(
-                  coin.name,
-                  style: TextStyle(color: Colors.white70),
+                leading: SizedBox(
+                  child: Image.asset('images/$cryptoCurrency.png'),
                 ),
                 trailing: Text(
-                  '\$${coin.price.toStringAsFixed(4)}',
+                  '$value $selectedCurrency',
                   style: TextStyle(
-                    color: Theme.of(context).accentColor,
-                    fontWeight: FontWeight.w600,
-                  ),
+                      fontFamily: 'Poppins', color: Colors.white, fontSize: 18),
                 ),
-              );
-            },
+              ),
+              // Column(
+              //   children: [
+              //     Kspinkit,
+              //   ],
+              // )
+            ],
           ),
         ),
-      );
-    } else if (state is CryptoError) {
-      return Center(
-        child: Text(
-          'Error loading coins!\nPlease check your connection',
-          style: TextStyle(
-            color: Theme.of(context).accentColor,
-            fontSize: 18.0,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      );
-    }
-  }
-
-  bool _onScrollNotification(ScrollNotification notif, CryptoLoaded state) {
-    if (notif is ScrollEndNotification &&
-        _scrollController.position.extentAfter == 0) {
-      context.bloc<CryptoBloc>().add(LoadMoreCoins(coins: state.coins));
-    }
-    return false;
+      ),
+    );
   }
 }

@@ -1,5 +1,3 @@
-import 'package:crypto_app/pages/Block.dart';
-import 'package:crypto_app/pages/homepage.dart';
 import 'package:crypto_app/rooter.dart';
 import 'package:crypto_app/services/authorization_service.dart';
 import 'package:flutter/material.dart';
