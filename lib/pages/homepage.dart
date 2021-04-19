@@ -1,7 +1,7 @@
-
-
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
+import 'package:crypto_app/pages/chat.dart';
+import 'package:crypto_app/pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -35,7 +35,7 @@ class _HomeState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: Text("Crypto Apppppp"),
+        title: Text("Crypto App"),
       ),
       body: Stack(
         children: <Widget>[
@@ -55,13 +55,12 @@ class _HomeState extends State<HomePage> {
     switch (seciliPozisyon) {
       case 0:
         return HomeScreen();
-        // slogan = "Anasayfa";
         break;
       case 1:
-        slogan = "Sohbet Odaları";
+        return FriendlyChatApp();
         break;
       case 2:
-        slogan = "Profil Sayfası";
+        return Profile();
         break;
     }
     return Center(
