@@ -22,6 +22,7 @@ class Rooter extends StatelessWidget {
           //data kontrolü
           if (snapshot.hasData) {
             Users activeUser = snapshot.data;
+            _authorizationService.activeUserId = activeUser.id;
             return HomePage();
           } else {
             return Login();

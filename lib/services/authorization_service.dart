@@ -1,10 +1,10 @@
-
 import 'package:crypto_app/models/users.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthorizationService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  String activeUserId;
 
   Users userAdd(User user) {
     return user == null ? null : Users.firebasedenUret(user);
@@ -31,6 +31,10 @@ class AuthorizationService {
 //çıkış yap metodu
   Future<void> logOut() {
     return firebaseAuth.signOut();
+  }
+
+  Future<void> resetPassword(String eposta) async {
+    await firebaseAuth.sendPasswordResetEmail(email: eposta);
   }
 
   //google ile giriş

@@ -24,4 +24,11 @@ class FireStoreService {
     }
     return null;
   }
+
+  void userUpdate({String userId, String userName, String photoUrl = ""}) {
+    _firestore
+        .collection("kullanicilar")
+        .doc(userId)
+        .update({"userName": userName, "photoUrl": photoUrl});
+  }
 }

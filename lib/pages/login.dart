@@ -1,5 +1,6 @@
 import 'package:crypto_app/models/users.dart';
 import 'package:crypto_app/pages/createAccount.dart';
+import 'package:crypto_app/pages/password_forgot.dart';
 import 'package:crypto_app/services/authorization_service.dart';
 import 'package:crypto_app/services/firestoreservice.dart';
 import 'package:flutter/material.dart';
@@ -140,7 +141,15 @@ class _LoginState extends State<Login> {
             ),
           )),
           SizedBox(height: 20.0),
-          Center(child: Text("Şifremi Unuttum")),
+          Center(
+              child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgotPassword()));
+                  },
+                  child: Text("Şifremi Unuttum"))),
         ],
       ),
     );

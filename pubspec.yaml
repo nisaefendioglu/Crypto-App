@@ -33,6 +33,7 @@ dependencies:
   cloud_firestore: 
   firebase_auth:
   firebase_core :
+  firebase_storage :
   provider:
   google_sign_in:
   circular_bottom_navigation: ^0.9.1
@@ -71,6 +72,8 @@ flutter:
     - images/polkadot.png
     - images/stellar.png
     - images/tether.png
+    - images/image.jpg
+    - images/user.png
     
   
 

@@ -2,8 +2,10 @@ import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:crypto_app/pages/chat.dart';
 import 'package:crypto_app/pages/profile.dart';
+import 'package:crypto_app/services/authorization_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
 import 'home_screen.dart';
 
@@ -50,6 +52,8 @@ class _HomeState extends State<HomePage> {
   }
 
   Widget bodyContainer() {
+    String activeUserId =
+        Provider.of<AuthorizationService>(context, listen: false).activeUserId;
     Color selectedColor = tabItems[seciliPozisyon].color;
     String slogan;
     switch (seciliPozisyon) {
@@ -60,7 +64,9 @@ class _HomeState extends State<HomePage> {
         return FriendlyChatApp();
         break;
       case 2:
-        return Profile();
+        return Profile(
+          profileId: activeUserId,
+        );
         break;
     }
     return Center(
