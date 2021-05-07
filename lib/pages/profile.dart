@@ -54,7 +54,7 @@ class _ProfileState extends State<Profile> {
               CircleAvatar(
                 backgroundColor: Colors.grey,
                 radius: 50.0,
-                backgroundImage: profileData.photoUrl.isNotEmpty
+                backgroundImage: profileData?.photoUrl?.isNotEmpty ?? false
                     ? NetworkImage(profileData.photoUrl)
                     : AssetImage("images/user.png"),
               )
@@ -86,7 +86,7 @@ class _ProfileState extends State<Profile> {
       width: double.infinity,
       child: OutlineButton(
         borderSide: BorderSide(color: Colors.pink, width: 0),
-        onPressed: () {
+        onPressed: ()  {
           Navigator.push(
               context,
               MaterialPageRoute(

@@ -1,5 +1,6 @@
 import 'package:crypto_app/models/users.dart';
 import 'package:crypto_app/pages/login.dart';
+import 'package:crypto_app/services/firestoreservice.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';

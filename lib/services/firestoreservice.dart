@@ -16,8 +16,7 @@ class FireStoreService {
   }
 
   Future<Users> bringUser(id) async {
-    DocumentSnapshot doc =
-        await _firestore.collection("kullanicilar").doc(id).get();
+    DocumentSnapshot doc = await _firestore.collection("users").doc(id).get();
     if (doc.exists) {
       Users users = Users.dokumandanUret(doc);
       return users;
@@ -27,7 +26,7 @@ class FireStoreService {
 
   void userUpdate({String userId, String userName, String photoUrl = ""}) {
     _firestore
-        .collection("kullanicilar")
+        .collection("users")
         .doc(userId)
         .update({"userName": userName, "photoUrl": photoUrl});
   }
