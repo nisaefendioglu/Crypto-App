@@ -24,7 +24,7 @@ final ThemeData kDefaultTheme = ThemeData(
   accentColor: Colors.orangeAccent,
 );
 
-String _name = '';
+String _name = 'nisa';
 
 class FriendlyChatApp extends StatelessWidget {
   const FriendlyChatApp({
@@ -138,8 +138,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                   });
                 },
                 onSubmitted: _isComposing ? _handleSubmitted : null,
-                decoration:
-                    InputDecoration.collapsed(hintText: 'Send a message'),
+                decoration: InputDecoration.collapsed(hintText: 'Mesaj Gönder'),
                 focusNode: _focusNode,
               ),
             ),
@@ -150,7 +149,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                         onPressed: _isComposing
                             ? () => _handleSubmitted(_textController.text)
                             : null,
-                        child: Text('Send'),
+                        child: Text('Gönder'),
                       )
                     : IconButton(
                         icon: const Icon(Icons.send),

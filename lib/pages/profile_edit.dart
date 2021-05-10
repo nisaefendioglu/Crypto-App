@@ -43,7 +43,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                 Icons.check,
                 color: Colors.black,
               ),
-              onPressed: _save()),
+              onPressed: () => _save()),
         ],
       ),
       body: ListView(
@@ -60,7 +60,7 @@ class _ProfileEditState extends State<ProfileEdit> {
     );
   }
 
-  _save() async {
+  Future _save() async {
     if (_formKey.currentState.validate()) {
       setState(() {
         _loading = true;

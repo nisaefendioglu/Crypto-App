@@ -1,5 +1,6 @@
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
+import 'package:crypto_app/models/coin_graphic.dart';
 import 'package:crypto_app/pages/chat.dart';
 import 'package:crypto_app/pages/profile.dart';
 import 'package:crypto_app/services/authorization_service.dart';
@@ -18,6 +19,7 @@ class _HomeState extends State<HomePage> {
   final _scrollController = ScrollController();
   List<TabItem> tabItems = List.of([
     new TabItem(Icons.home, "Anasayfa", Colors.blue),
+    new TabItem(Icons.analytics, "Analiz", Colors.blueGrey),
     new TabItem(Icons.message, "Sohbet Odası", Colors.orange),
     new TabItem(Icons.person, "Profil", Colors.red),
   ]);
@@ -34,6 +36,7 @@ class _HomeState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
@@ -55,23 +58,22 @@ class _HomeState extends State<HomePage> {
     String activeUserId =
         Provider.of<AuthorizationService>(context, listen: false).activeUserId;
     Color selectedColor = tabItems[seciliPozisyon].color;
-    String slogan;
     switch (seciliPozisyon) {
       case 0:
         return HomeScreen();
         break;
       case 1:
-        return FriendlyChatApp();
+        return CoinGraphic();
         break;
       case 2:
+        return FriendlyChatApp();
+        break;
+      case 3:
         return Profile(
           profileId: activeUserId,
         );
         break;
     }
-    return Center(
-      child: Text(slogan),
-    );
   }
 
   Widget bottomNav() {

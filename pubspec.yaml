@@ -43,8 +43,7 @@ dependencies:
   shared_preferences:
   uuid:
   dash_chat: 1.1.15 
-
-
+  
 
 dev_dependencies:
   flutter_test:

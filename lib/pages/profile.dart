@@ -86,7 +86,7 @@ class _ProfileState extends State<Profile> {
       width: double.infinity,
       child: OutlineButton(
         borderSide: BorderSide(color: Colors.pink, width: 0),
-        onPressed: ()  {
+        onPressed: () {
           Navigator.push(
               context,
               MaterialPageRoute(
