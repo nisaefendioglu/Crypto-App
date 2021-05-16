@@ -10,7 +10,7 @@ class StorageService {
   Future<String> profilePhotoAdd(File photoFile) async {
     photoId = Uuid().v4();
     UploadTask uploadManager = _storage
-        .child("images/profile/profile_$photoId.jpg")
+        .child("images/profile_$photoId.jpg")
         .putFile(photoFile);
 
     TaskSnapshot snapshot = await uploadManager;

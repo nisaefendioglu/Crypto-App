@@ -82,35 +82,39 @@ class _ProfileState extends State<Profile> {
 
   Widget _profileEditButton() {
     return Container(
-      color: Colors.pink,
-      width: double.infinity,
-      child: OutlineButton(
-        borderSide: BorderSide(color: Colors.pink, width: 0),
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => ProfileEdit(
-                        profile: _myprofile,
-                      )));
-        },
-        child: Text("Profili Düzenle"),
-      ),
-    );
+        color: Colors.black,
+        width: double.infinity,
+        child: OutlineButton(
+          borderSide: BorderSide(color: Colors.black, width: 0),
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ProfileEdit(
+                          profile: _myprofile,
+                        )));
+          },
+          child: Text(
+            "Profili Düzenle",
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
   }
 
   Widget _logoutButton() {
     return Container(
-      color: Colors.green,
-      width: double.infinity,
-      child: OutlineButton(
-        borderSide: BorderSide(color: Colors.green, width: 0),
-        onPressed: () {
-          _logout();
-        },
-        child: Text("Çıkış Yap"),
-      ),
-    );
+        color: Colors.grey,
+        width: double.infinity,
+        child: OutlineButton(
+          borderSide: BorderSide(color: Colors.grey, width: 0),
+          onPressed: () {
+            _logout();
+          },
+          child: Text(
+            "Çıkış Yap",
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
   }
 
   void _logout() {
