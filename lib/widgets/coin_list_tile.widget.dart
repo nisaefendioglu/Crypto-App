@@ -5,7 +5,6 @@ import 'package:crypto_app/widgets/price_change.widget.dart';
 typedef void SelectedCoinTileCallback(SelectedCoinTile selectedCoinTile);
 
 class CoinListTile extends StatelessWidget {
-
   final String imageUrl;
   final String name;
   final String fullName;
@@ -24,21 +23,20 @@ class CoinListTile extends StatelessWidget {
     this.priceChange = 0,
     this.formattedPriceChange = '',
     this.borderRadius,
-    this.onSelect
+    this.onSelect,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 2.0),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 5.0),
         decoration: BoxDecoration(
-          color: const Color.fromRGBO(67, 78, 122, 1),
+          color: Colors.black,
           borderRadius: borderRadius ?? BorderRadius.circular(10.0),
           border: Border.all(
-            color: const Color.fromRGBO(67, 76, 112, 1),
+            color: Colors.black,
             width: 2.0,
           ),
         ),
@@ -62,56 +60,60 @@ class CoinListTile extends StatelessWidget {
                   formattedPriceChange: formattedPriceChange,
                 ));
               },
-              title: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            fullName,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            name,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+              title: Row(children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        fullName,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: <Widget>[
-                        Text(
-                          formattedPrice,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.0
-                          ),
+                      Text(
+                        name,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
                         ),
-                        PriceChange(
-                          change: priceChange,
-                          price: formattedPriceChange,
-                        ),
-                      ],
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    Text(
+                      formattedPrice,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0),
                     ),
-                  ]
-              ),
+                    PriceChange(
+                      change: priceChange,
+                      price: formattedPriceChange,
+                    ),
+                  ],
+                ),
+                Text(
+                  " "
+                  "Detay →",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12.0,
+                  ),
+                )
+              ]),
             ),
           ],
         ),
       ),
     );
   }
-
 }
-
 
 class SelectedCoinTile {
   final String imageUrl;
@@ -121,7 +123,11 @@ class SelectedCoinTile {
   final num priceChange;
   final String formattedPriceChange;
 
-  SelectedCoinTile({this.imageUrl, this.name, this.fullName, this.formattedPrice,
-      this.priceChange, this.formattedPriceChange});
-
+  SelectedCoinTile(
+      {this.imageUrl,
+      this.name,
+      this.fullName,
+      this.formattedPrice,
+      this.priceChange,
+      this.formattedPriceChange});
 }

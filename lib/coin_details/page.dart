@@ -25,33 +25,34 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Container(
-          decoration: BoxDecoration(),
-        ),
         Scaffold(
           backgroundColor: Colors.black,
-          appBar: AppBar(
-            title: Text('KRİPTO DETAY',
-                style: TextStyle(
-                  letterSpacing: 10.0,
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,
-                )),
-            centerTitle: true,
-            backgroundColor: Colors.black,
-            elevation: 0.0,
-            actions: <Widget>[
-              StoreConnector<AppState, PageModel>(
-                  converter: (Store<AppState> store) => PageModel.create(store),
-                  builder: (BuildContext context, PageModel model) {
-                    return IconButton(
-                      icon: Icon(
-                        Icons.refresh,
-                      ),
-                      onPressed: () => model.onRefresh(),
-                    );
-                  }),
-            ],
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(27.0),
+            child: AppBar(
+              title: Text('KRİPTO DETAY',
+                  style: TextStyle(
+                    letterSpacing: 10.0,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                  )),
+              centerTitle: true,
+              backgroundColor: Colors.black,
+              elevation: 0.0,
+              actions: <Widget>[
+                StoreConnector<AppState, PageModel>(
+                    converter: (Store<AppState> store) =>
+                        PageModel.create(store),
+                    builder: (BuildContext context, PageModel model) {
+                      return IconButton(
+                        icon: Icon(
+                          Icons.refresh,
+                        ),
+                        onPressed: () => model.onRefresh(),
+                      );
+                    }),
+              ],
+            ),
           ),
           body: Container(
             padding:
