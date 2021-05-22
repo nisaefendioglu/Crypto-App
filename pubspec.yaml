@@ -46,6 +46,7 @@ dependencies:
   flutter_redux: 0.5.3
   cached_network_image: 2.0.0
   charts_flutter: 0.8.1
+  photo_view: ^0.4.2
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +77,7 @@ flutter:
     - images/tether.png
     - images/image.jpg
     - images/user.png
+    - images/logo.png
     
   
 
