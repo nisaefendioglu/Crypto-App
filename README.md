@@ -13,9 +13,7 @@ My mobile application that I developed with Flutter has the following features: 
 - A chat room created to be able to chat about crypto within the application
 - Profile page created to change the username, add a profile photo or log out of the application
 
-#MIT LICENSE
-
-MIT License
+# MIT LICENSE
 
 Copyright (c) 2021 Nisa Efendioğlu
 
