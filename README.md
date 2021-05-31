@@ -7,11 +7,11 @@ Flutter library in the Dart programming language
 API for Crypto Exchange -> min-api.cryptocompare.com
 
 
-My mobile application that I developed with Flutter has the following features:
--Showing up-to-date crypto data simultaneously
+My mobile application that I developed with Flutter has the following features: <br>
+- Showing up-to-date crypto data simultaneously
 - Detail page and graphics created to analyze crypto coins in detail
--A chat room created to be able to chat about crypto within the application
--Profile page created to change the username, add a profile photo or log out of the application
+- A chat room created to be able to chat about crypto within the application
+- Profile page created to change the username, add a profile photo or log out of the application
 
 
 
