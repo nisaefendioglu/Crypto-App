@@ -1,10 +1,10 @@
 # Crypto App
 
-Technologies and tools used in practice:
-Flutter library in the Dart programming language
--Firebase database
--VsCode or Android Studio IDE
-API for Crypto Exchange -> min-api.cryptocompare.com
+Technologies and tools used in practice: <br>
+- Flutter library in the Dart programming language
+- Firebase database
+- VsCode or Android Studio IDE
+- API for Crypto Exchange -> min-api.cryptocompare.com
 
 
 My mobile application that I developed with Flutter has the following features: <br>
