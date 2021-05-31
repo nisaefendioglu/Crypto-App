@@ -61,7 +61,7 @@ class _HomeState extends State<HomePage> {
         return HomeScreen();
         break;
       case 1:
-        return FriendlyChatApp();
+        return ChatScreen();
         break;
       case 2:
         return Profile(

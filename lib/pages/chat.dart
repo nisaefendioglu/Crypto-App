@@ -1,11 +1,7 @@
-import 'package:crypto_app/models/users.dart';
-import 'package:crypto_app/pages/login.dart';
-import 'package:crypto_app/services/firestoreservice.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:crypto_app/pages/profile_edit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 
 void main() {
   runApp(
@@ -24,7 +20,7 @@ final ThemeData kDefaultTheme = ThemeData(
   accentColor: Colors.orangeAccent,
 );
 
-String _name = 'nisa';
+String _name = 'Nisa';
 
 class FriendlyChatApp extends StatelessWidget {
   const FriendlyChatApp({
