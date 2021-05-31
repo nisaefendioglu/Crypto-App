@@ -1,15 +1,13 @@
-# crypto_app
+# Crypto App
 
-A new Flutter project.
+My mobile application that I developed with Flutter has the following features:
+-Showing up-to-date crypto data simultaneously
+- Detail page and graphics created to analyze crypto coins in detail
+-A chat room created to be able to chat about crypto within the application
+-Profile page created to change the username, add a profile photo or log out of the application
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
