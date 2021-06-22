@@ -35,6 +35,15 @@ dependencies:
   firebase_core :
   firebase_storage :
   firebase_messaging:
+  firebase_auth_ui: any
+  firebase_database: any
+  flutter_riverpod: any
+  firebase_analytics:
+  bubble_tab_indicator: any
+  bubble: any
+  page_transition: any
+
+
   provider:
   google_sign_in:
   circular_bottom_navigation: ^0.9.1 
