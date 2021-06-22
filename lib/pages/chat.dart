@@ -12,37 +12,11 @@ import 'package:crypto_app/pages/chatMessage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 
-<<<<<<< HEAD
 final googleSignIn = new GoogleSignIn();
 final analytics = new FirebaseAnalytics();
 final auth = FirebaseAuth.instance;
 var currentUserEmail;
 var _scaffoldContext;
-=======
-void main() {
-  runApp(
-    FriendlyChatApp(),
-  );
-}
-
-final ThemeData kIOSTheme = ThemeData(
-  primarySwatch: Colors.blue,
-  primaryColor: Colors.grey[100],
-  primaryColorBrightness: Brightness.light,
-);
-
-final ThemeData kDefaultTheme = ThemeData(
-  primarySwatch: Colors.orange,
-  accentColor: Colors.orangeAccent,
-);
-
-String _name = '';
-
-class FriendlyChatApp extends StatelessWidget {
-  const FriendlyChatApp({
-    Key key,
-  }) : super(key: key);
->>>>>>> 75e3eeda5d33d34dbb34610048a71c75825a869b
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -60,43 +34,50 @@ class ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Flutter Chat App"),
+          elevation:
+              Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
+        ),
         body: new Container(
-      child: new Column(
-        children: <Widget>[
-          new Flexible(
-            child: new FirebaseAnimatedList(
-              query: reference,
-              padding: const EdgeInsets.all(8.0),
-              reverse: true,
-              sort: (DataSnapshot a, DataSnapshot b) => b.key.compareTo(a.key),
-              itemBuilder: (BuildContext context, DataSnapshot messageSnapshot,
-                  Animation<double> animation, int index) {
-                return new ChatMessage(
-                  messageSnapshot: messageSnapshot,
-                  animation: animation,
-                );
-              },
-            ),
+          child: new Column(
+            children: <Widget>[
+              new Flexible(
+                child: new FirebaseAnimatedList(
+                  query: reference,
+                  padding: const EdgeInsets.all(8.0),
+                  reverse: true,
+                  sort: (DataSnapshot a, DataSnapshot b) =>
+                      b.key.compareTo(a.key),
+                  itemBuilder: (BuildContext context,
+                      DataSnapshot messageSnapshot,
+                      Animation<double> animation,
+                      int index) {
+                    return new ChatMessage(
+                        messageSnapshot: messageSnapshot, animation: animation);
+                  },
+                ),
+              ),
+              new Divider(height: 1.0),
+              new Container(
+                decoration:
+                    new BoxDecoration(color: Theme.of(context).cardColor),
+                child: _buildTextComposer(),
+              ),
+              new Builder(builder: (BuildContext context) {
+                _scaffoldContext = context;
+                return new Container(width: 0.0, height: 0.0);
+              })
+            ],
           ),
-          new Divider(height: 1.0),
-          new Container(
-            decoration: new BoxDecoration(color: Theme.of(context).cardColor),
-            child: _buildTextComposer(),
-          ),
-          new Builder(builder: (BuildContext context) {
-            _scaffoldContext = context;
-            return new Container(width: 0.0, height: 0.0);
-          })
-        ],
-      ),
-      decoration: Theme.of(context).platform == TargetPlatform.iOS
-          ? new BoxDecoration(
-              border: new Border(
-                  top: new BorderSide(
-              color: Colors.grey[200],
-            )))
-          : null,
-    ));
+          decoration: Theme.of(context).platform == TargetPlatform.iOS
+              ? new BoxDecoration(
+                  border: new Border(
+                      top: new BorderSide(
+                  color: Colors.grey[200],
+                )))
+              : null,
+        ));
   }
 
   CupertinoButton getIOSSendButton() {
@@ -157,6 +138,8 @@ class ChatScreenState extends State<ChatScreen> {
                     });
                   },
                   onSubmitted: _textMessageSubmitted,
+                  decoration:
+                      new InputDecoration.collapsed(hintText: "Send a message"),
                 ),
               ),
               new Container(
