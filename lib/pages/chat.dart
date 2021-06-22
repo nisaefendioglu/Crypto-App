@@ -12,11 +12,37 @@ import 'package:crypto_app/pages/chatMessage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 
+<<<<<<< HEAD
 final googleSignIn = new GoogleSignIn();
 final analytics = new FirebaseAnalytics();
 final auth = FirebaseAuth.instance;
 var currentUserEmail;
 var _scaffoldContext;
+=======
+void main() {
+  runApp(
+    FriendlyChatApp(),
+  );
+}
+
+final ThemeData kIOSTheme = ThemeData(
+  primarySwatch: Colors.blue,
+  primaryColor: Colors.grey[100],
+  primaryColorBrightness: Brightness.light,
+);
+
+final ThemeData kDefaultTheme = ThemeData(
+  primarySwatch: Colors.orange,
+  accentColor: Colors.orangeAccent,
+);
+
+String _name = '';
+
+class FriendlyChatApp extends StatelessWidget {
+  const FriendlyChatApp({
+    Key key,
+  }) : super(key: key);
+>>>>>>> 75e3eeda5d33d34dbb34610048a71c75825a869b
 
 class ChatScreen extends StatefulWidget {
   @override
