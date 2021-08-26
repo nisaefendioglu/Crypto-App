@@ -13,7 +13,7 @@ My mobile application that I developed with Flutter has the following features: 
 - A chat room created to be able to chat about crypto within the application
 - Profile page created to change the username, add a profile photo or log out of the application
 
-# Screen Imges
+# Screen Images
 
 ![Adsız](https://user-images.githubusercontent.com/48391281/130991706-6e5950fc-5f1d-4632-ace1-b206b290cd06.png)
 
