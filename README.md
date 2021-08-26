@@ -15,13 +15,7 @@ My mobile application that I developed with Flutter has the following features: 
 
 # Screen Images
 
-![Adsız](https://user-images.githubusercontent.com/48391281/130991706-6e5950fc-5f1d-4632-ace1-b206b290cd06.png)
-
-
-
-# Screen Video
-
-https://user-images.githubusercontent.com/48391281/122920563-34c12780-d36a-11eb-8a28-233f5ed9a3f5.mp4
+![130991706-6e5950fc-5f1d-4632-ace1-b206b290cd06](https://user-images.githubusercontent.com/48391281/131020922-9a027716-a92d-4bfe-bcaf-016b72a21211.png)
 
 
 ## License
